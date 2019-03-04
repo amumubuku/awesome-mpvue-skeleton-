@@ -36,7 +36,8 @@
 
 <script>
 import skeleton from '@/components/skeleton';
-
+import request from '@/utils/util'
+import { setTimeout } from 'timers';
 export default {
   data() {
     return {
@@ -57,9 +58,19 @@ export default {
   methods: {},
 
   created() {
-    setTimeout(() => {
-      this.showSkeleton = false;
-    }, 2000);
+    // 异步请求
+    request('https://www.easy-mock.com/mock/5c7d3de92d0e9237c71cca6b/mock/skeleton').then(res=>{
+      if(res.statusCode === 200){
+        this.motto = res.data.data.motto
+        this.userInfo = res.data.data.userInfo
+        this.lists = res.data.data.lists
+      }
+    }).then(()=>{
+      // 微信开发者工具slow3G似乎有问题
+      setTimeout(()=>{
+        this.showSkeleton = false;
+      },2000)
+    })
   },
 };
 </script>

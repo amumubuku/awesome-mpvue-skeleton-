@@ -32,3 +32,7 @@ npm run dev
       this.showSkeleton = false;
     }, 2000);
   ```
+  
+## How 2 View
+
+微信开发者工具`slow3G`太慢了，用`fast3G`可以看见效果

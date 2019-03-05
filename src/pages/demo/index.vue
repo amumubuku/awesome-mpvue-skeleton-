@@ -66,10 +66,8 @@ export default {
         this.lists = res.data.data.lists
       }
     }).then(()=>{
-      // 微信开发者工具slow3G似乎有问题
-      setTimeout(()=>{
-        this.showSkeleton = false;
-      },2000)
+      // 微信开发者工具slow3G似乎有问题，fast3G可以看见效果
+      this.showSkeleton = false;
     })
   },
 };

@@ -36,7 +36,7 @@
 
 <script>
 import skeleton from '@/components/skeleton';
-import request from '@/utils/util'
+import request from '@/utils/util';
 import { setTimeout } from 'timers';
 export default {
   data() {
@@ -59,16 +59,19 @@ export default {
 
   created() {
     // 异步请求
-    request('https://www.easy-mock.com/mock/5c7d3de92d0e9237c71cca6b/mock/skeleton').then(res=>{
-      if(res.statusCode === 200){
-        this.motto = res.data.data.motto
-        this.userInfo = res.data.data.userInfo
-        this.lists = res.data.data.lists
-      }
-    }).then(()=>{
-      // 微信开发者工具slow3G似乎有问题，fast3G可以看见效果
-      this.showSkeleton = false;
-    })
+    request('https://www.easy-mock.com/mock/5c7d3de92d0e9237c71cca6b/mock/skeleton')
+      .then(res => {
+        if (res.statusCode === 200) {
+          this.motto = res.data.data.motto;
+          this.userInfo = res.data.data.userInfo;
+          this.lists = res.data.data.lists;
+        }
+      })
+      .then(() => {
+        // slow3G很慢
+        // fast3G比较快
+        this.showSkeleton = false;
+      });
   },
 };
 </script>
